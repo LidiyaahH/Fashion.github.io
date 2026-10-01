@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>FASHION EDIT — Discover Your Style</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #faf9f7;
+      color: #292524;
+      line-height: 1.7;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(250,249,247,0.96);
+      backdrop-filter: blur(10px);
+      padding: 17px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e7e2dc;
+    }
+
+    .logo {
+      font-family: Georgia, serif;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #292524;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #8b6f47;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+
+      background:
+        linear-gradient(
+          rgba(30,25,20,0.45),
+          rgba(30,25,20,0.60)
+        ),
+        url("https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=80")
+        center/cover;
+
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(48px, 8vw, 85px);
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+
+    .hero-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 13px 30px;
+      border: 1px solid white;
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .hero-button:hover {
+      background: white;
+      color: #292524;
+    }
+
+    /* SECTION */
+    section {
+      padding: 80px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-family: Georgia, serif;
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #78716c;
+    }
+
+    /* ARTICLES */
+    .articles {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e8e3dd;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 28px;
+    }
+
+    .label {
+      display: inline-block;
+      color: #8b6f47;
+      border: 1px solid #cbbda8;
+      padding: 4px 12px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 13px;
+    }
+
+    .card h3 {
+      font-family: Georgia, serif;
+      font-size: 27px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #6b625b;
+    }
+
+    .read-more {
+      border: none;
+      background: none;
+      color: #8b6f47;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .more-text {
+      display: none;
+      margin-top: 15px;
+      color: #57504a;
+    }
+
+    /* ABOUT */
+    .about {
+      background: #eee9e2;
+    }
+
+    .about-content {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about-content p {
+      margin-bottom: 15px;
+      color: #5f5750;
+    }
+
+    /* STYLE GUIDE */
+    .style-guide {
+      background: white;
+    }
+
+    .style-list {
+      max-width: 900px;
+      margin: auto;
+      display: grid;
+      gap: 15px;
+    }
+
+    .style-item {
+      padding: 22px;
+      border-bottom: 1px solid #ddd6cf;
+    }
+
+    .style-item strong {
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #8b6f47;
+    }
+
+    /* COMMENTS */
+    .comments {
+      max-width: 850px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border: 1px solid #e8e3dd;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #292524;
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    footer h3 {
+      font-family: Georgia, serif;
+      margin-bottom: 8px;
+    }
+
+    footer p {
+      opacity: 0.7;
+      font-size: 13px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+
+      nav {
+        padding: 15px 5%;
+      }
+
+      nav ul {
+        gap: 12px;
+        font-size: 12px;
+      }
+
+      .articles {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 60px 5%;
+      }
+
+      .hero {
+        min-height: 75vh;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .card img {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+
+    <div class="logo">
+      FASHION EDIT
+    </div>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#styles">Styles</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#guide">Style Guide</a></li>
+      <li><a href="#comments">Comments</a></li>
+    </ul>
+
+  </nav>
+
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <h1>FASHION EDIT</h1>
+
+      <p>
+        Discover your style. Express yourself.
+      </p>
+
+      <a href="#styles" class="hero-button">
+        Explore Styles
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- STYLES -->
+  <section id="styles">
+
+    <div class="section-title">
+
+      <h2>Explore Your Style</h2>
+
+      <p>
+        Empat gaya fashion dengan karakter dan
+        identitas yang berbeda.
+      </p>
+
+    </div>
+
+
+    <div class="articles">
+
+
+      <!-- BOHEMIAN -->
+      <article class="card">
+
+        <img
+          src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1000&q=80"
+          alt="Bohemian Style"
+        >
+
+        <div class="card-content">
+
+          <span class="label">
+            Bohemian
+          </span>
+
+          <h3>
+            Bohemian Style
+          </h3>
+
+          <p>
+            Gaya bebas dan artistik yang identik dengan
+            warna earthy, motif unik, dan kesan natural.
+          </p>
+
+          <button
+            class="read-more"
+            onclick="toggleText('boho')">
+            Baca selengkapnya →
+          </button>
+
+          <div class="more-text" id="boho">
+
+            Bohemian style atau boho dikenal dengan
+            tampilan yang santai, bebas, dan terinspirasi
+            dari unsur alam serta budaya. Maxi dress,
+            kain bermotif, aksesori, dan warna earthy
+            sering menjadi bagian dari gaya ini.
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- PREPPY -->
+      <article class="card">
+
+        <img
+          src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1000&q=80"
+          alt="Preppy Style"
+        >
+
+        <div class="card-content">
+
+          <span class="label">
+            Preppy
+          </span>
+
+          <h3>
+            Preppy Style
+          </h3>
+
+          <p>
+            Gaya klasik dan rapi yang memberikan kesan
+            smart, clean, dan sophisticated.
+          </p>
+
+          <button
+            class="read-more"
+            onclick="toggleText('preppy')">
+            Baca selengkapnya →
+          </button>
+
+          <div class="more-text" id="preppy">
+
+            Preppy style terinspirasi dari pakaian
+            sekolah atau kampus klasik. Item seperti
+            kemeja, sweater, polo shirt, blazer, rok,
+            celana bahan, dan loafers sering digunakan
+            untuk menciptakan tampilan ini.
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- CHIC -->
+      <article class="card">
+
+        <img
+          src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1000&q=80"
+          alt="Chic Style"
+        >
+
+        <div class="card-content">
+
+          <span class="label">
+            Chic
+          </span>
+
+          <h3>
+            Chic Style
+          </h3>
+
+          <p>
+            Gaya elegan dan minimalis yang mengutamakan
+            kesederhanaan serta tampilan yang polished.
+          </p>
+
+          <button
+            class="read-more"
+            onclick="toggleText('chic')">
+            Baca selengkapnya →
+          </button>
+
+          <div class="more-text" id="chic">
+
+            Chic style mengutamakan pakaian yang sederhana
+            tetapi terlihat elegan. Pemilihan warna yang
+            harmonis, potongan pakaian yang rapi, dan
+            aksesori minimalis menjadi ciri khas gaya ini.
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- TEXAS -->
+      <article class="card">
+
+        <img
+          src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1000&q=80"
+          alt="Texas Style"
+        >
+
+        <div class="card-content">
+
+          <span class="label">
+            Western
+          </span>
+
+          <h3>
+            Texas Style
+          </h3>
+
+          <p>
+            Gaya western yang identik dengan denim,
+            boots, kemeja, dan aksesori statement.
+          </p>
+
+          <button
+            class="read-more"
+            onclick="toggleText('texas')">
+            Baca selengkapnya →
+          </button>
+
+          <div class="more-text" id="texas">
+
+            Texas style mengambil inspirasi dari fashion
+            western Amerika. Denim, cowboy boots,
+            kemeja, jaket, belt, dan topi menjadi beberapa
+            elemen yang sering digunakan untuk menciptakan
+            tampilan western yang kuat.
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+
+    <div class="section-title">
+
+      <h2>About Fashion Edit</h2>
+
+    </div>
+
+    <div class="about-content">
+
+      <p>
+        <strong>FASHION EDIT</strong> merupakan blog
+        sederhana yang membahas berbagai gaya fashion
+        dan karakter yang dimilikinya.
+      </p>
+
+      <p>
+        Fashion bukan hanya tentang mengikuti tren,
+        tetapi juga menjadi salah satu cara untuk
+        mengekspresikan kepribadian dan kreativitas.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- STYLE GUIDE -->
+  <section class="style-guide" id="guide">
+
+    <div class="section-title">
+
+      <h2>Quick Style Guide</h2>
+
+      <p>
+        Kenali karakter utama dari setiap gaya.
+      </p>
+
+    </div>
+
+
+    <div class="style-list">
+
+      <div class="style-item">
+
+        <strong>Bohemian</strong>
+
+        <p>
+          Free-spirited, earthy, artistic, dan relaxed.
+        </p>
+
+      </div>
+
+
+      <div class="style-item">
+
+        <strong>Preppy</strong>
+
+        <p>
+          Classic, clean, polished, dan youthful.
+        </p>
+
+      </div>
+
+
+      <div class="style-item">
+
+        <strong>Chic</strong>
+
+        <p>
+          Elegant, minimal, sophisticated, dan timeless.
+        </p>
+
+      </div>
+
+
+      <div class="style-item">
+
+        <strong>Texas</strong>
+
+        <p>
+          Western, bold, denim, rugged, dan statement.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- COMMENTS -->
+  <section id="comments">
+
+    <div class="section-title">
+
+      <h2>Comments</h2>
+
+      <p>
+        Bagikan gaya fashion favoritmu dan pendapatmu
+        tentang artikel di blog ini.
+      </p>
+
+    </div>
+
+
+    <div class="comments">
+
+      <script
+        src="https://utteranc.es/client.js"
+        repo="sasikiranarzky/ruang-edukasi-"
+        issue-term="pathname"
+        label="blog-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+      </script>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <h3>FASHION EDIT</h3>
+
+    <p>
+      Discover your style. Express yourself.
+    </p>
+
+    <p>
+      © 2026 Fashion Edit
+    </p>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    function toggleText(id) {
+
+      const text = document.getElementById(id);
+
+      if (text.style.display === "block") {
+
+        text.style.display = "none";
+
+      } else {
+
+        text.style.display = "block";
+
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>
